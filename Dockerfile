@@ -17,16 +17,16 @@ COPY . .
 RUN npm run build
 
 # Use an nginx image to serve the static files
-# FROM nginx:alpine
+FROM nginx:alpine
 
 # Copy the built React app from the previous stage
-# COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
 # Start nginx
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
 
 # serve the build files
-CMD ["npm", "run", "preview"]
+# CMD ["npm", "run", "preview"]
